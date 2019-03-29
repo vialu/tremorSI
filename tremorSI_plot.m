@@ -99,6 +99,42 @@ plot(iqr_right,'.')
 subplot(212)
 plot(iqr_left,'.')
 
+%%  Extract IQR data
+
+
+side = 1;
+    %1 left
+    %2 right
+    
+condi = 2;    
+        %{'rest'     ;... %1
+        %'posture'   ;... %2
+        %'posture1'   ;... %3
+        %'posture15'   ;... %4
+        %'posture2'};       %5
+             
+for li = 1:2        
+for subji = 1:30        
+        
+d1 = DeltaF{li,1}{subji,condi}; 
+d2 = iqr(d1);
+
+if li==1
+iqr_left(subji) = d2;
+else
+iqr_right(subji) = d2;
+end
+
+end
+end
+
+
+figure
+subplot(211)
+plot(iqr_right,'.')
+subplot(212)
+plot(iqr_left,'.')
+
 
 %%   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %plot single subject
